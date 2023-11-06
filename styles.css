@@ -1,0 +1,99 @@
+ body{
+background-color: #A6D0DD;
+margin: 0;
+padding: 0;
+font-family:Poppins, sans-serif;
+}
+
+
+
+container{
+    display: flex;    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width:204px;
+    margin: auto;
+    height:350px;
+    border-radius: 10px;
+   
+}
+
+
+#pantalla {
+    width: 196px;
+    height: 80px;
+    border: 2px solid  rgba(206, 207, 172, .5);
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: #FCFFB2;
+    color: black;
+    position: relative;
+    text-align:right;
+    overflow: hidden;
+    padding: 0 2px;
+    
+}
+
+.display-1 {
+    opacity: .4;
+    font-size: 25px;
+    overflow: hidden;
+    margin:0 auto;
+}
+
+.temp-result {
+    position: absolute;
+    bottom:0;
+    left: 10;
+    font-size: 25px;
+    opacity:.4;
+}
+
+
+.botones{
+    display:grid;
+    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+    padding-top: 3px;
+    
+}
+
+.boton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:none;
+    cursor: pointer;
+    width: 92%;
+    height: 3.5em;
+    font-family: 'Poppins', sans-serif;
+    font-size: .8rem;
+    color: #fff;
+    border-radius: 2px;
+    background: #FF6969;
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    margin: 1px auto;
+
+}
+
+.boton:hover{
+    background: #FFBABA;
+    color: #FCFFB2;
+    border:none;
+    transition: all .5s ease; 
+}
+
+#igual{
+    grid-column: 3/5;
+    width: 96%;
+}
+
+
+
+.deleted{
+    grid-column: 3/5;
+    width: 96%;
+   
+}
