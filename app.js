@@ -1,11 +1,11 @@
-const display1El = document.querySelector(".display-1");
-const display2El = document.querySelector(".display-2");
-const tempResultEl = document.querySelector("temp-result");
-const numbersEl = document.querySelectorAll(".number");
-const operationEl = document.querySelectorAll(".operation");
-const equalEl = document.querySelector(".equal");
-const clearEl = document.querySelector("all-clear");
-const clearLastEl = document.querySelector(".deleted");
+const display1El = document.querySelector('.display-1');
+const display2El = document.querySelector('.display-2');
+const tempResultEl = document.querySelector('.temp-result');
+const numbersEl = document.querySelectorAll('.number');
+const operationEl = document.querySelectorAll('.operation');
+const equalEl = document.querySelector('.equal');
+const clearAllEl = document.querySelector('.all-clear');
+const clearLastEl = document.querySelector('.deleted');
 
 
 let dis1Num = '';
@@ -27,12 +27,25 @@ numbersEl.forEach( number => {
     })
 })
 
+// numbersEl.forEach( number => {
+//     number.addEventListener('click', (e)=> {
+//         if(e.target.innerText === '$' && !haveMoney){
+//             haveMoney = true;
+//         }else if(e.target.innerText === '$' && haveMoney){
+//             return;
+//         }
+//         dis2Num += e.target.innerText;
+//         display2El.innerText = dis2Num;
+//     })
+// })
+
+
+
 operationEl.forEach(operation =>{
     operation.addEventListener('click', (e)=>{
-        if(!dis2Num) result;
+        if(!dis2Num) return;
         haveDot= false;
         const operationName = e.target.innerText;
-        
         if(dis1Num && dis2Num && lastOperation){
             mathOperation();
         }else {
@@ -64,6 +77,8 @@ function mathOperation(){
         result = parseFloat(result) / parseFloat(dis2Num);
     } else if (lastOperation === '%') {
         result = parseFloat(result) % parseFloat(dis2Num);
+    } else if (lastOperation === 'EXP'){
+        result = Math.pow(result, dis2Num);
     }
 
 }
@@ -79,8 +94,73 @@ equalEl.addEventListener('click', (e)=> {
     dis1Num = '';
 });
 
-clearLastEl.addEventListener('click', (e)=> {
+clearAllEl.addEventListener('click', (e)=> {
+    display1El.innerHTML = '0';
+    display2El.innerText = '0';
+    dis1Num = '';
+    dis2Num = '';
+    result = '';
+    tempResultEl.innerText = '0'
+});
+ 
+clearLastEl.addEventListener('click', (e) => {
     display2El.innerText = '';
     dis2Num = '';
-})
- 
+
+});
+
+
+
+window.addEventListener('keydown', (e) => {
+    if(
+        e.key === '0' ||
+        e.key === '1' ||
+        e.key === '2' ||
+        e.key === '3' ||
+        e.key === '4' ||
+        e.key === '5' ||
+        e.key === '6' ||
+        e.key === '7' ||
+        e.key === '8' ||
+        e.key === '9' ||
+        e.key === '.' ||
+        e.key === parseFloat('$') 
+    ){
+        clickButtonEl(e.key);
+    } else if(
+        e.key === '*' ||
+        e.key === '+' ||
+        e.key === '-' ||
+        e.key === '%' ||
+        e.key === '/'
+    ){
+      clickOperation(e.key);
+    } else if(e.key === '*'){
+        clickOperation('x');
+    } else if(e.key == 'Enter' || e.key === '='){
+        clickEqual();
+    }
+});
+
+function clickButtonEl(key){
+    numbersEl.forEach( button => {
+        if(button.innerText === key){
+            button.click();
+        }
+    })
+}
+
+function clickOperation(key){
+    operationEl.forEach(button => {
+        if(button.innerText === key){
+            button.click();
+        }
+    })
+
+}
+
+
+function clickEqual(){
+    equalEl.click();
+
+}
