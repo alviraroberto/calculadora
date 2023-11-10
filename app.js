@@ -124,7 +124,7 @@ window.addEventListener('keydown', (e) => {
         e.key === '8' ||
         e.key === '9' ||
         e.key === '.' ||
-        e.key === parseFloat('$') 
+        e.key === parseInt('$') 
     ){
         clickButtonEl(e.key);
     } else if(

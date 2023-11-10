@@ -97,3 +97,16 @@ container{
     width: 96%;
    
 }
+
+
+#a-clear{
+    grid-column: 1/3;
+    width: 96%;
+   
+}
+
+#cero{
+    grid-column: 1/3;
+    width: 96%;
+   
+}
